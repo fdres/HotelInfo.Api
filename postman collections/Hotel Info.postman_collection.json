@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "bbf8a72e-3286-485e-9f1c-6e5b43be725b",
+		"name": "Hotel Info",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Hotels",
+			"item": [
+				{
+					"name": "Get All Hotels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hotel with Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels?name={{hotelName}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{hotelName}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hotel by Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Hotel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Overlook Hotel\",\n\t\"address\": \"333 Wonderview Avenue, Colorado\",\n\t\"starRating\": 4.5,\n\t\"description\": \"The one with the ghosts and the potential family massacre\"\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Hotel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Hilton Athens\",\n\t\"address\": \"Leof. Vasilissis Sofias 46, Athens 115 28\",\n\t\"starRating\": 5\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Hotel",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Bookings",
+			"item": [
+				{
+					"name": "Get Bookings for Hotel",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}/bookings",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Booking By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}/bookings/{{bookingId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}",
+								"bookings",
+								"{{bookingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Booking",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customerSurname\": \"Sgt. Powell\",\n\t\"customerName\": \"Al\",\n\t\"paxNumber\": 2\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}/bookings",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}",
+								"bookings"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Booking",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"customerSurname\": \"Gruber\",\n    \"customerName\": \"Hans\",\n    \"paxNumber\": 3\n}"
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}/bookings/{{bookingId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}",
+								"bookings",
+								"{{bookingId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Booking",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{host}}/api/hotels/{{hotelId}}/bookings/{{bookingId}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"api",
+								"hotels",
+								"{{hotelId}}",
+								"bookings",
+								"{{bookingId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
