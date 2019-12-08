@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Net;
+using System.Text.Json;
 using System.Threading.Tasks;
 using HotelInfo.Api.Exceptions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
 
 namespace HotelInfo.Api.Middlewares
 {
@@ -46,7 +46,7 @@ namespace HotelInfo.Api.Middlewares
             }
 
             var exceptionMessage = new { errorMessage = exMessage };
-            var errorContent = JsonConvert.SerializeObject(exceptionMessage);
+            var errorContent = JsonSerializer.Serialize(exceptionMessage);
 
             await httpContext.Response.WriteAsync(errorContent);
         }

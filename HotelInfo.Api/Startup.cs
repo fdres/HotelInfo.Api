@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
+using Microsoft.Extensions.Hosting;
 
 namespace HotelInfo.Api
 {
@@ -27,14 +27,14 @@ namespace HotelInfo.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc()
-                .AddJsonOptions(options =>
-                {
-                    options.SerializerSettings.Formatting = Formatting.Indented;
-                    options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
-                    options.SerializerSettings.DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate;
-                })
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddControllers(options =>
+            {
+                options.ReturnHttpNotAcceptable = true;
+            }).AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.WriteIndented = true;
+            });
 
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -50,7 +50,10 @@ namespace HotelInfo.Api
             });
 
             var hotelDbConnectionString = Configuration.GetConnectionString("HotelsDBConnectionString");
-            services.AddDbContext<HotelInfoContext>(options => { options.UseSqlServer(hotelDbConnectionString); });
+            services.AddDbContext<HotelInfoContext>(options =>
+            {
+                options.UseSqlServer(hotelDbConnectionString);
+            });
             services.AddScoped<IHotelInfoRepository, HotelInfoRepository>();
             services.AddScoped<IHotelService, HotelService>();
             services.AddScoped<IBookingService, BookingService>();
@@ -59,26 +62,25 @@ namespace HotelInfo.Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
 
             app.UseHttpsRedirection();
-            
+
             app.UseCustomExceptionHandling();
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
-            app.UseMvc();
+            app.UseRouting();
+
+            //app.UseAuthorization();
+
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
     }
 }

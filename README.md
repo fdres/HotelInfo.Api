@@ -2,7 +2,7 @@
 
 This project is a simple REST Web Api which implements CRUD operations for managing hotel and booking records.
 
-The project is developed in Visual Studio 2017 with .NET Core 2.2 Framework and EF Core for database queries.
+The project is developed in Visual Studio 2019 with .NET Core 3.1 Framework and EF Core for database queries.
 All calls are made asynchronously using async/await.
 
 SQL Server is used as a database provider. 
@@ -25,6 +25,5 @@ Migrations include some demo data.
 
 ### Notes
 
-- The solution includes a xUnit test project. The tests are done on the service implementations, not the controllers.
 - A postman collection and a postman environment file are included in the project directory.
 - All exceptions are handled by a custom middleware.
