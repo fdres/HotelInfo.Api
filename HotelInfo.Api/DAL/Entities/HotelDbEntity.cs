@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HotelInfo.Api.DAL.Entities
+﻿namespace HotelInfo.Api.DAL.Entities
 {
     public abstract class HotelDbEntity
     {

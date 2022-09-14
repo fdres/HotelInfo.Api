@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using HotelInfo.Api.DAL.Entities;
 using HotelInfo.Api.DAL.Repository;
 using HotelInfo.Api.DTO;

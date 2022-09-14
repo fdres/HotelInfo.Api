@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
-namespace HotelInfo.Api
+﻿namespace HotelInfo.Api
 {
     public static class Program
     {

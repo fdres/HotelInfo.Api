@@ -1,10 +1,9 @@
-﻿using System;
-using HotelInfo.Api.DAL.Entities;
+﻿using HotelInfo.Api.DAL.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace HotelInfo.Api.DAL.Contexts
 {
-    public class HotelInfoContext : DbContext 
+    public class HotelInfoContext : DbContext
     {
         public DbSet<Hotel> Hotels { get; set; }
 

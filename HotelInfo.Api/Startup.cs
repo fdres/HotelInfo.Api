@@ -1,17 +1,10 @@
-﻿using System.Linq;
-using AutoMapper;
-using HotelInfo.Api.DAL.Contexts;
+﻿using HotelInfo.Api.DAL.Contexts;
 using HotelInfo.Api.DAL.Repository;
 using HotelInfo.Api.Exceptions;
 using HotelInfo.Api.Middlewares;
 using HotelInfo.Api.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace HotelInfo.Api
 {
@@ -32,7 +25,6 @@ namespace HotelInfo.Api
                 options.ReturnHttpNotAcceptable = true;
             }).AddJsonOptions(options =>
             {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
                 options.JsonSerializerOptions.WriteIndented = true;
             });
 
@@ -41,7 +33,7 @@ namespace HotelInfo.Api
                 options.InvalidModelStateResponseFactory = actionContext =>
                 {
                     var errorMessage = actionContext.ModelState
-                        .Where(e => e.Value.Errors.Count > 0)
+                        .Where(e => e.Value != null && e.Value.Errors.Count > 0)
                         .Select(e => e.Value.Errors.FirstOrDefault()?.ErrorMessage)
                         .FirstOrDefault() ?? "Bad Request. Erroneous model state";
 

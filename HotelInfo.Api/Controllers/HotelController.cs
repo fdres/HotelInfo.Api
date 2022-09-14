@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using HotelInfo.Api.DTO;
+﻿using HotelInfo.Api.DTO;
 using HotelInfo.Api.Services;
 using Microsoft.AspNetCore.Mvc;
 

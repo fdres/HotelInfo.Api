@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using HotelInfo.Api.DTO;
+﻿using HotelInfo.Api.DTO;
 
 namespace HotelInfo.Api.Services
 {

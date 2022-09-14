@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HotelInfo.Api.Exceptions
+﻿namespace HotelInfo.Api.Exceptions
 {
     public abstract class BaseException : Exception
     {

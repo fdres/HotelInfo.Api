@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace HotelInfo.Api.Middlewares
+﻿namespace HotelInfo.Api.Middlewares
 {
     public static class Extensions
     {
